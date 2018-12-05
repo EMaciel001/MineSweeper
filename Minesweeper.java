@@ -1,6 +1,6 @@
 public class Minesweeper
 {
-    private int numRows, numCols, numMines;
+    private int numRows = 5, numCols = 5, numMines;
 
     private Cell[][] cells = new Cell[numRows][numCols];
     
