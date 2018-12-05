@@ -1,12 +1,8 @@
-import java.util.*;
-
 public class Cell
 {
     private int row, col;
     private boolean covered, marked, mined;
     private int adjcount;
-
-    Random rand = new Random();
 
     public Cell(int r, int c)
     {
@@ -30,7 +26,7 @@ public class Cell
                 System.out.print("?");
             }
         }
-        else
+        else if(covered == false)
         {
             if(mined == true)
             {
@@ -44,7 +40,7 @@ public class Cell
                 }
                 else if(adjcount > 0)
                 {
-                    System.out.print(rand.nextInt(8) + 1);
+                    System.out.println(adjcount);
                 }
             }
         }
@@ -63,17 +59,10 @@ public class Cell
     }
     public void setUncovered()
     {
-        if(covered == true){
-            if(marked == false){
-                covered = false;
-            }
-            else{
-                return;
-            }
-        }
-        else{
+        if(covered == true && marked == false)
+            covered = false;
+        else
             return;
-        }
     }
     public boolean getMarked()
     {
@@ -90,7 +79,12 @@ public class Cell
     }
     public int getAdjCount()
     {
-        return adjcount;
+        if(mined == false)
+        {
+            return adjcount;
+    
+        }
+        else return 0;
     }
     public void setAdjCount(int c)
     {
