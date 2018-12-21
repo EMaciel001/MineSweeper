@@ -1,15 +1,47 @@
+import java.util.Random;
+
 public class Minesweeper
 {
-    private int numRows = 5, numCols = 5, numMines;
-
-    private Cell[][] cells = new Cell[numRows][numCols];
+    private int numRows = 5;
+    private int numCols = 5; 
+    private int numMines;
+    private Cell[][] grid = Cell[numCols][numRows];;
     
     public Minesweeper()
     {
-        
+        placeMines();
+        setCounts();
+    }
+    private void setCounts()
+    {
+        for(int i = 0; i < numCols; i++)
+        {
+            for(int j = 0; i < numRows; i++)
+            {
+                if(grid[i][j].getMined() == false)
+                {
+                    grid[i][j].setAdjCount(getAdjMineCount(i, j));
+                }
+            }
+        }
+    }
+    private void placeMines()
+    {
+        Random rand = new Random();
+        int row;
+        int col;
+
+        for(int i = 0; i < numMines; i++)
+        {
+            row = rand.nextInt(numRows);
+            col = rand.nextInt(numCols);
+
+            grid[row][col].setMined(true);
+        }
     }
     public int getAdjMineCount(int i, int j)
     {
+        
         return Int;
     }
     public int getMarkCount()
